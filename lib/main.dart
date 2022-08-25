@@ -1,8 +1,10 @@
-import 'package:babysitter_app/Screens/full_reviews.dart';
+import 'package:babysitter_app/providers/babysitter_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import './Screens/profiles_screen.dart';
 import './Screens/bottombar.dart';
+import './Screens/full_reviews.dart';
 
 void main() => runApp(myApp());
 
@@ -11,19 +13,26 @@ class myApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Baby Sitters',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.deepPurple,
-          accentColor: Color.fromARGB(255, 239, 238, 238),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => babySitters(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Baby Sitters',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.deepPurple,
+            accentColor: Color.fromARGB(255, 239, 238, 238),
+          ),
         ),
+        home: BottomBar(),
+        routes: {
+          ProfilesPage.routeName: (context) => ProfilesPage(),
+          ReviewScreen.routeName: (context) => ReviewScreen(),
+        },
       ),
-      home: BottomBar(),
-      routes: {
-        ProfilesPage.routeName: (context) => ProfilesPage(),
-        ReviewScreen.routeName: (context) => ReviewScreen(),
-      },
     );
   }
 }

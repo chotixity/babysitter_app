@@ -1,7 +1,8 @@
+import 'package:babysitter_app/providers/babysitter_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/babysitter_item.dart';
-import '../models/data.dart';
 
 class HomepageScreen extends StatelessWidget {
   static const routeName = '/Homepage';
@@ -10,6 +11,8 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final babysitterList = Provider.of<babySitters>(context);
+
     return Scaffold(
       body: Column(
         children: [
@@ -28,14 +31,14 @@ class HomepageScreen extends StatelessWidget {
                 return Card(
                     child: BabySitterItem(
                   color: Colors.transparent,
-                  imageUrl: babysitter[index].imageUrl[0],
-                  id: babysitter[index].id,
+                  imageUrl: babysitterList.babysitter[index].imageUrl[0],
+                  id: babysitterList.babysitter[index].id,
                   name:
-                      '${babysitter[index].firstName}  ${babysitter[index].lastName}',
-                  rating: babysitter[index].rating,
+                      '${babysitterList.babysitter[index].firstName}  ${babysitterList.babysitter[index].lastName}',
+                  rating: babysitterList.babysitter[index].rating,
                 ));
               },
-              itemCount: babysitter.length,
+              itemCount: babysitterList.babysitter.length,
             ),
           ),
         ],

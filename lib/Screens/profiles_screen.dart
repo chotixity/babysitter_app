@@ -1,20 +1,22 @@
-import 'package:babysitter_app/Screens/full_reviews.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import '../models/data.dart';
+import '../Screens/full_reviews.dart';
+import '../providers/babysitter_provider.dart';
 
 class ProfilesPage extends StatelessWidget {
   static const routeName = '/profiles';
 
-  late String id;
+  final String id;
 
-  //ProfilesPage({required this.id});
-
+  ProfilesPage(this.id);
   @override
   Widget build(BuildContext context) {
+    final babysitters = Provider.of<babySitters>(context);
     final babysitterId = ModalRoute.of(context)!.settings.arguments as String;
-    final selectedBabySitter =
-        babysitter.firstWhere((babysitter) => babysitterId == babysitter.id);
+    final selectedBabySitter = babysitters.babysitter
+        .firstWhere((babysitter) => babysitterId == babysitter.id);
 
     return Scaffold(
       body: SingleChildScrollView(
