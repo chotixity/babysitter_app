@@ -40,7 +40,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _pages[_selectedPageIndex]['appBar'] as AppBar,
+      //appBar: _pages[_selectedPageIndex]['appBar'] as AppBar,
       body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,

@@ -1,4 +1,4 @@
-import 'package:babysitter_app/providers/babysitter_provider.dart';
+import 'package:babysitter_app/babysitter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +24,12 @@ class myApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.deepPurple,
-            accentColor: Color.fromARGB(255, 239, 238, 238),
+            accentColor: const Color.fromARGB(255, 239, 238, 238),
+          ).copyWith(secondary: Colors.purple),
+          textTheme: const TextTheme(
+            bodyText1: TextStyle(
+              fontSize: 16,
+            ),
           ),
         ),
         home: BottomBar(),

@@ -19,66 +19,73 @@ class BabySitterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 1 / 3,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(25),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(30),
+        ),
+        color: Color.fromRGBO(255, 235, 252, 1),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: ListTile(
-          title: Text(
-            name,
-            style: const TextStyle(
-              color: Colors.deepPurple,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                children: <Widget>[
-                  const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(rating),
-                ],
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
+      padding: const EdgeInsets.only(left: 30),
+      height: MediaQuery.of(context).size.height * .25,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        Text(rating),
+                      ],
+                    ),
+                  ],
                 ),
-                child: ElevatedButton(
-                  // style: ,
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                      ),
+                    ),
+                  ),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(ProfilesPage.routeName, arguments: id);
+                    Navigator.of(context).pushNamed(
+                      ProfilesPage.routeName,
+                      arguments: id,
+                    );
                   },
                   child: const Text('View Profile'),
                 ),
-              ),
-            ],
-          ),
-          trailing: FractionallySizedBox(
-            widthFactor: .4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.network(
-                imageUrl,
-                height: MediaQuery.of(context).size.height * 1 / 3,
-                fit: BoxFit.cover,
-              ),
+              ],
             ),
           ),
-        ),
+          Expanded(
+            flex: 2,
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
       ),
     );
   }

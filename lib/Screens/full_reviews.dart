@@ -1,8 +1,6 @@
-import 'package:babysitter_app/providers/babysitter_provider.dart';
+import 'package:babysitter_app/babysitter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../models/data.dart';
 
 class ReviewScreen extends StatelessWidget {
   static const routeName = '/fullReviews';
@@ -18,20 +16,28 @@ class ReviewScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         title: const Text('REVIEWS'),
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(30),
+            bottomRight: Radius.circular(100),
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: ListView.builder(
+          shrinkWrap: true,
           itemBuilder: (context, index) {
             return ListTile(
               leading: CircleAvatar(
-                child: Image.network(selectedBabySitter.imageUrl[index][0]),
+                child: Image.asset(
+                  selectedBabySitter.reviews[index]['image'] as String,
+                ),
               ),
               title: Text(
                 selectedBabySitter.reviews[index]['User'] as String,
