@@ -1,4 +1,4 @@
-import 'package:babysitter_app/babysitter_provider.dart';
+import 'package:babysitter_app/providers/babysitter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,10 +9,9 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final babysitterList = Provider.of<babySitters>(context);
     final babysitterId = ModalRoute.of(context)!.settings.arguments as String;
-    final selectedBabySitter = babysitterList.babysitter
-        .firstWhere((babysitter) => babysitterId == babysitter.id);
+    final selectedBabySitter =
+        Provider.of<babySitters>(context).findById(babysitterId);
 
     return Scaffold(
       appBar: AppBar(

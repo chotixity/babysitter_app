@@ -1,4 +1,6 @@
-class BabySitter {
+import 'package:flutter/material.dart';
+
+class BabySitter with ChangeNotifier {
   final String firstName;
   final String lastName;
   final String location;
@@ -9,8 +11,9 @@ class BabySitter {
   final String description;
   final List<String> imageUrl;
   final List<Map<String, double>> pricing;
+  bool isFavorite;
 
-  const BabySitter({
+  BabySitter({
     required this.firstName,
     required this.gender,
     required this.lastName,
@@ -21,5 +24,11 @@ class BabySitter {
     required this.imageUrl,
     required this.reviews,
     required this.pricing,
+    this.isFavorite = false,
   });
+
+  void togglefavorite() {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 }

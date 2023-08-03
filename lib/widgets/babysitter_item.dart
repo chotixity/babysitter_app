@@ -1,28 +1,30 @@
+import 'package:babysitter_app/providers/babysitter.dart';
+import 'package:provider/provider.dart';
+
 import '../Screens/profiles_screen.dart';
 import 'package:flutter/material.dart';
 
 class BabySitterItem extends StatelessWidget {
-  final String name;
-  final String rating;
-  final String id;
-  final Color color;
-  final String imageUrl;
+  //final String name;
+  //final String rating;
+  //final String id;
+  //final Color color;
+  //final String imageUrl;
 
   const BabySitterItem({
-    required this.name,
-    required this.id,
-    required this.rating,
-    required this.imageUrl,
-    required this.color,
+    super.key,
+    //required this.name,
+    //required this.id,
+    // required this.rating,
+    // required this.imageUrl,
+    //required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
+    final babySitter = Provider.of<BabySitter>(context);
     return Container(
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
-        ),
         color: Color.fromRGBO(255, 235, 252, 1),
       ),
       padding: const EdgeInsets.only(left: 30),
@@ -39,7 +41,7 @@ class BabySitterItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
+                      '${babySitter.firstName} ${babySitter.lastName}',
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -52,7 +54,7 @@ class BabySitterItem extends StatelessWidget {
                           Icons.star,
                           color: Colors.amber,
                         ),
-                        Text(rating),
+                        Text(babySitter.rating),
                       ],
                     ),
                   ],
@@ -70,7 +72,7 @@ class BabySitterItem extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushNamed(
                       ProfilesPage.routeName,
-                      arguments: id,
+                      arguments: babySitter.id,
                     );
                   },
                   child: const Text('View Profile'),
@@ -81,8 +83,8 @@ class BabySitterItem extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
+              babySitter.imageUrl[0],
+              fit: BoxFit.fitHeight,
             ),
           ),
         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'models/babysitter.dart';
+import 'babysitter.dart';
 
 class babySitters with ChangeNotifier {
-  final List<BabySitter> _babysitter = const [
+  final List<BabySitter> _babysitter = [
     BabySitter(
       firstName: 'Nikita',
       gender: 'Female',
@@ -11,7 +11,7 @@ class babySitters with ChangeNotifier {
       location: 'Kenya, Kiango',
       id: 'B1',
       description:
-          'He has watched my two children (ages 4 and 7) twice a week for the entire summer, and they were a joy to work with. {Babysitter name} consistently arrived at our home on time, ready to engage with our kids, with a smile on.',
+          'He has watched my two children (ages 4 and 7) twice a week for the entire summer, and they were a joy to work with. Consistently arrived at our home on time, ready to engage with our kids, with a smile on.',
       rating: '4.8',
       imageUrl: [
         'assets/images/image13.png',
@@ -84,7 +84,7 @@ class babySitters with ChangeNotifier {
           'He has watched my two children (ages 4 and 7) twice a week for the entire summer, and they were a joy to work with. {Babysitter name} consistently arrived at our home on time, ready to engage with our kids, with a smile on.',
       rating: '4.8',
       imageUrl: [
-        'assets/images/image13.png',
+        'assets/images/image12.png',
         'assets/images/image10.png',
       ],
       reviews: [
@@ -148,5 +148,9 @@ class babySitters with ChangeNotifier {
 
   List<BabySitter> get babysitter {
     return [..._babysitter];
+  }
+
+  BabySitter findById(String id) {
+    return _babysitter.firstWhere((element) => element.id == id);
   }
 }
