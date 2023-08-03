@@ -22,9 +22,17 @@ class ReviewScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         title: const Text('REVIEWS'),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: CircleAvatar(
+                backgroundImage: AssetImage(selectedBabySitter.imageUrl[0])),
+          )
+        ],
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(100),
+            bottomRight: Radius.circular(200),
           ),
         ),
       ),

@@ -147,7 +147,10 @@ class ProfilesPage extends StatelessWidget {
                     colors: colors,
                   ),
                 ),
-                Text(selectedBabySitter.description),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(selectedBabySitter.description),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -162,7 +165,7 @@ class ProfilesPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 150,
+                  height: 180,
                   child: Flexible(
                     child: ListView.builder(
                       itemCount: selectedBabySitter.reviews.length,
