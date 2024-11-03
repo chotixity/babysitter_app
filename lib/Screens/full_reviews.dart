@@ -1,4 +1,4 @@
-import 'package:babysitter_app/providers/babysitter_provider.dart';
+import 'package:babysitter_app/repository/babysitter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,18 +43,18 @@ class ReviewScreen extends StatelessWidget {
             return ListTile(
               leading: CircleAvatar(
                 child: Image.asset(
-                  selectedBabySitter.reviews[index]['image'] as String,
+                  selectedBabySitter.reviews?[index]['image'] as String,
                 ),
               ),
               title: Text(
-                selectedBabySitter.reviews[index]['User'] as String,
+                selectedBabySitter.reviews?[index]['User'] as String,
               ),
               subtitle: Text(
-                selectedBabySitter.reviews[index]['Review'] as String,
+                selectedBabySitter.reviews?[index]['Review'] as String,
               ),
             );
           },
-          itemCount: selectedBabySitter.reviews.length,
+          itemCount: selectedBabySitter.reviews?.length,
         ),
       ),
     );

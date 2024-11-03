@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import './Screens/profiles_screen.dart';
 import './Screens/bottombar.dart';
 import './Screens/full_reviews.dart';
-import './providers/babysitter_provider.dart';
+import 'repository/babysitter_provider.dart';
 
-void main() => runApp(const myApp());
+void main() => runApp(const MyApp());
 
-class myApp extends StatelessWidget {
-  const myApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class myApp extends StatelessWidget {
         ),
         home: const BottomBar(),
         routes: {
-          ProfilesPage.routeName: (context) => ProfilesPage(),
+          //ProfilesPage.routeName: (context) => ProfilesPage(),
           ReviewScreen.routeName: (context) => const ReviewScreen(),
         },
       ),

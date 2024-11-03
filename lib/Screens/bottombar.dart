@@ -12,7 +12,7 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   final List<Map<String, Object>> _pages = [
     {
-      'page': HomepageScreen(),
+      'page': const HomepageScreen(),
       'appBar': AppBar(
         leading: IconButton(
           onPressed: () {},
@@ -21,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
       ),
     },
     {
-      'page': ProfilesPage(),
+      'page': const ProfilesPage(),
       'appBar': AppBar(
         title: const Text('Your profiles'),
         backgroundColor: Colors.transparent,
