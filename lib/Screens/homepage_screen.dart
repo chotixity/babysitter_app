@@ -9,9 +9,15 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: BabySitterItem(),
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            BabySitterItem(),
+          ],
+        ),
       ),
     );
   }

@@ -33,6 +33,13 @@ class MyApp extends StatelessWidget {
               fontSize: 16,
             ),
           ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll<Color>(
+                    Theme.of(context).colorScheme.primary),
+                foregroundColor:
+                    const WidgetStatePropertyAll<Color>(Colors.white)),
+          ),
         ),
         home: const BottomBar(),
         routes: {

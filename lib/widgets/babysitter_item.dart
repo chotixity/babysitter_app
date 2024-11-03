@@ -9,13 +9,37 @@ class BabySitterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox(
       height: 200,
-      width: MediaQuery.sizeOf(context).width * .35,
-      child: const ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        child: ProfileImage(
-          imageUrl: "assets/images/image13.png",
+      width: double.infinity,
+      child: Card(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width * .5,
+                  child: ListTile(
+                    title: Text(
+                      "Nikita Johns",
+                      style: theme.textTheme.titleLarge!
+                          .copyWith(color: theme.colorScheme.primary),
+                    ),
+                    subtitle: const Text("🌟 4.8"),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {}, child: const Text("View profile"))
+              ],
+            ),
+            const ProfileImage(
+              imageUrl: "assets/images/image13.png",
+            ),
+          ],
         ),
       ),
     );
