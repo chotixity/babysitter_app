@@ -5,7 +5,7 @@ class BabysittersState with _$BabysittersState {
   const factory BabysittersState.initial() = _Initial;
   const factory BabysittersState.loading() = _Loading;
   const factory BabysittersState.loaded({
-    required List<BabySitter> speakers,
+    required List<BabySitter> babysitters,
   }) = _Loaded;
   const factory BabysittersState.error(String message) = _Error;
 }

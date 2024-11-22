@@ -14,7 +14,7 @@ class BabysittersBloc extends Cubit<BabysittersState> {
     try {
       final fetchedBabySitters = await getBabySitters();
       emit(BabysittersState.loaded(
-        speakers: fetchedBabySitters,
+        babysitters: fetchedBabySitters,
       ));
     } catch (e) {
       emit(BabysittersState.error(e.toString()));

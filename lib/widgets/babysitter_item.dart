@@ -1,9 +1,12 @@
+import 'package:babysitter_app/models/babysitter.dart';
 import 'package:babysitter_app/widgets/profile_image.dart';
 
 import 'package:flutter/material.dart';
 
 class BabySitterItem extends StatelessWidget {
+  final BabySitter babySitter;
   const BabySitterItem({
+    required this.babySitter,
     super.key,
   });
 
@@ -25,7 +28,7 @@ class BabySitterItem extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width * .5,
                   child: ListTile(
                     title: Text(
-                      "Nikita Johns",
+                      '${babySitter.firstName} ${babySitter.lastName}',
                       style: theme.textTheme.titleLarge!
                           .copyWith(color: theme.colorScheme.primary),
                     ),
@@ -36,8 +39,8 @@ class BabySitterItem extends StatelessWidget {
                     onPressed: () {}, child: const Text("View profile"))
               ],
             ),
-            const ProfileImage(
-              imageUrl: "assets/images/image13.png",
+            ProfileImage(
+              imageUrl: babySitter.imageUrl[0],
             ),
           ],
         ),
