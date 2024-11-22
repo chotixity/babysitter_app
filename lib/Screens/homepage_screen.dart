@@ -10,7 +10,9 @@ class HomepageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("BabySitter App"),
+      ),
       body: const Padding(
         padding: EdgeInsets.all(16),
         child: Column(

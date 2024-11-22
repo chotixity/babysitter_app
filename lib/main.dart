@@ -1,10 +1,8 @@
+import 'package:babysitter_app/state/babysitters_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import './Screens/profiles_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import './Screens/bottombar.dart';
 import './Screens/full_reviews.dart';
-import 'repository/babysitter_provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,12 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => babySitters(),
+        BlocProvider(
+          create: (_) => BabysittersBloc(),
         ),
-        //ChangeNotifierProvider(create: (context) => Babys)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
